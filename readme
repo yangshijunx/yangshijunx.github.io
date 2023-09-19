@@ -1,0 +1,9 @@
+hexo new [layout] title或 hexo n [layout] title // 新增文章
+使用hexo n draft draft1命令将在source\目录下创建_drafts目录，并生成一个draft1.md文件。
+
+当你编辑完草稿后，可以把文章推送到_posts目录下，通过下面的命令：
+
+$ hexo publish <file_name>
+可以使用hexo --draft命令可以查看已有草稿。
+
+想要在本地预览草稿的静态文件，也需要在生成静态文件时加上draft参数。
