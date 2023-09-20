@@ -188,7 +188,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" rel="tag">每日一练</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -198,7 +198,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a> <a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" style="font-size: 13px;">每日一练</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 13px;">算法</a>
+      <a href="/tags/Javascript/" style="font-size: 13px;">Javascript</a>
     </div>
   </div>
 
@@ -226,7 +226,7 @@
                 <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
               </p>
               <p class="item-title">
-                <a href="/2023/09/19/My-New-Post/" class="title">My New Post</a>
+                <a href="/2023/09/19/My-New-Post/" class="title">事件循环</a>
               </p>
               <p class="item-date">
                 <time datetime="2023-09-19T14:10:32.000Z" itemprop="datePublished">2023-09-19</time>
@@ -255,7 +255,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2023/09/19/My-New-Post/">My New Post</a>
+      <a class="article-title" href="/2023/09/19/My-New-Post/">事件循环</a>
     </h1>
   
 
@@ -276,7 +276,7 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Javascript/" rel="tag">Javascript</a>, <a class="article-tag-link-link" href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E7%BB%83/" rel="tag">每日一练</a>, <a class="article-tag-link-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a>
+	<a class="article-tag-link-link" href="/tags/Javascript/" rel="tag">Javascript</a>
   </span>
 
 
@@ -288,7 +288,35 @@
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        
+        <h1 id="EventLoop事件循环"><a href="#EventLoop事件循环" class="headerlink" title="EventLoop事件循环"></a>EventLoop事件循环</h1><p><strong>现在我们来澄清一件事情（可能令人震惊）：尽管你显然能够编写异步 JavaScript 代码（就像前面我们看到的定时代码），但直到最近（ES6），JavaScript 才真正内建有直接的异步概念   —— 你不知道的javascript 中</strong></p>
+<p>因为js是单线程的，单线程就意味着，js代码在执行的任何时候都只有一个主线程来处理所有的任务。为什么js是单线程的呢，一个很重要的原因就是js作为一个脚本语言，他的主要的执行环境就是浏览器，在浏览器中我们需要进行各种各样的dom操作，如果这里js是多线程的就会出现这种情况，比如一条代码需要给某个dom新增事件，另一条代码需要删除这个dom，那到底应该执行那一个就会存在问题。</p>
+<p>所以为了防止代码阻塞把任务分为同步任务和异步任务。js在执行任务的时候，把同步代码交给js引擎执行，异步任务交给宿主环境执行。同步代码放入执行栈中，异步代码等待时机成熟送入任务队列排队，执行栈执行完毕之后，会检查任务队列中是否有异步任务，有就推入执行栈执行，以此往复循环，这个过程就叫做事件循环。</p>
+<h3 id="执行栈"><a href="#执行栈" class="headerlink" title="执行栈"></a>执行栈</h3><p>在js中当我们调用一个方法的时候，js会生成一个与这个方法对应的执行环境（执行上下文），这个执行环境中存在这个方法的私有作用域，上层作用于的指向，方法的参数，这个作用域中定义的变量以及这个作用域的this对象，因为js是单线程的，所以同一时间只能执行一个方法，于是这些方法就会排队，排队的地方就叫做执行栈。</p>
+<p>每当遇到一个同步方法的逐个推入执行栈中，顺序执行。</p>
+<p>那么异步方法如何处理的呢？</p>
+<h3 id="任务队列"><a href="#任务队列" class="headerlink" title="任务队列"></a>任务队列</h3><p>js在遇到一个异步事件之后，并不会等待异步的结果返回，而是将这个事件挂起，继续执行执行栈中的其他任务，当一个异步事件返回结果后，js会将这个事件加入和当前执行站不同的队列中也就是<strong>任务队列，</strong>放入其中的任务并不会立即执行，二十等待执行栈中的所有任务执行完毕，当执行栈为空的时候，主线程会去检查任务队列是否有剩余任务，如果有的话就推入执行栈中，执行其中的同步代码，这样的往复循环就叫做事件循环。</p>
+<h3 id="微任务和宏任务"><a href="#微任务和宏任务" class="headerlink" title="微任务和宏任务"></a>微任务和宏任务</h3><p>异步任务也不都是相同的，异步任务的执行优先级也不相同，异步任务可以分为两类，分别是微任务和宏任务。</p>
+<ul>
+<li>宏任务<ul>
+<li><code>setTimeout</code></li>
+<li><code>setInterval</code></li>
+<li><code>setImmediate</code> (Node 独有)</li>
+<li><code>requestAnimationFrame</code> (浏览器独有)</li>
+<li>I&#x2F;O</li>
+<li>UI rendering (浏览器独有)</li>
+</ul>
+</li>
+<li>微任务<ul>
+<li><code>process.nextTick</code> (Node 独有)</li>
+<li>Promises (准确的说是 Promise.then() 中 then 的回调函数, 而不是 new promise(callback) 携带的回调函数)</li>
+<li><code>Object.observeMutationObserverqueueMicrotask</code></li>
+<li><code>Object.observe</code></li>
+<li><code>queueMicrotask</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>也就是主线程在检查微任务队列是否有事件存在的时候，首先检查微任务队列，如果不存在然后去宏任务队列中取事件加入当前执行栈，如果微任务队列中存在则在同一个事件循环中会将微任务队列中的事件执行完毕之后再执行宏任务队列。</strong></p>
+
       
     </div>
     <div class="article-footer">
@@ -297,7 +325,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://yangshijunx.github.io/2023/09/19/My-New-Post/" title="My New Post" target="_blank" rel="external">https://yangshijunx.github.io/2023/09/19/My-New-Post/</a>
+      <a href="https://yangshijunx.github.io/2023/09/19/My-New-Post/" title="事件循环" target="_blank" rel="external">https://yangshijunx.github.io/2023/09/19/My-New-Post/</a>
     </li>
     
     <li class="post-copyright-license">
