@@ -17,20 +17,22 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>repository | 杨某人的博客</title>
-  <meta name="description" content="不积硅步无以至千里，不积小流无以成江海">
-<meta property="og:type" content="website">
-<meta property="og:title" content="repository">
-<meta property="og:url" content="https://yangshijunx.github.io/repository/index.html">
+  <title>Electron第一节 | 杨某人的博客</title>
+  <meta name="description" content="electron第一节Date: September 25, 2023Status: In progressText: 1_Bit 什么是electronBuild cross-platform desktop apps with JavaScript, HTML, and CSS ——— electron官网 简单来说就是，electron就是一个使用js，html和css搭建跨平台桌面应用程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Electron第一节">
+<meta property="og:url" content="https://yangshijunx.github.io/2023/09/25/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/index.html">
 <meta property="og:site_name" content="1Bit">
-<meta property="og:description" content="不积硅步无以至千里，不积小流无以成江海">
+<meta property="og:description" content="electron第一节Date: September 25, 2023Status: In progressText: 1_Bit 什么是electronBuild cross-platform desktop apps with JavaScript, HTML, and CSS ——— electron官网 简单来说就是，electron就是一个使用js，html和css搭建跨平台桌面应用程序">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-09-19T12:21:51.000Z">
-<meta property="article:modified_time" content="2023-09-19T12:21:51.558Z">
+<meta property="article:published_time" content="2023-09-25T16:22:29.000Z">
+<meta property="article:modified_time" content="2023-09-25T16:23:03.365Z">
 <meta property="article:author" content="1Bit">
+<meta property="article:tag" content="Javascript">
+<meta property="article:tag" content="Electron">
 <meta name="twitter:card" content="summary">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://yangshijunx.github.io/repository/index.html">
+  <link rel="canonical" href="https://yangshijunx.github.io/2023/09/25/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/index.html">
   
     <link rel="alternate" href="/atom.xml" title="1Bit" type="application/atom+xml">
   
@@ -279,14 +281,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="page-" class="article article-type-page" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Electron第一节" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      repository
+      Electron第一节
     </h1>
   
 
@@ -294,22 +296,44 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/repository/index.html" class="article-date">
-	  <time datetime="2023-09-19T12:21:51.000Z" itemprop="datePublished">2023-09-19</time>
+	<a href="/2023/09/25/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/" class="article-date">
+	  <time datetime="2023-09-25T16:22:29.000Z" itemprop="datePublished">2023-09-25</time>
 	</a>
 </span>
         
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+  </span>
+
         
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Electron/" rel="tag">Electron</a>, <a class="article-tag-link-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+  </span>
+
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/repository/index.html#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/09/25/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        
+        <h1 id="electron第一节"><a href="#electron第一节" class="headerlink" title="electron第一节"></a>electron第一节</h1><p>Date: September 25, 2023<br>Status: In progress<br>Text: 1_Bit</p>
+<h3 id="什么是electron"><a href="#什么是electron" class="headerlink" title="什么是electron"></a>什么是electron</h3><p><strong>Build cross-platform desktop apps with JavaScript, HTML, and CSS ——— electron官网</strong></p>
+<p>简单来说就是，electron就是一个使用js，html和css搭建跨平台桌面应用程序的框架。</p>
+<p>每一个electron应用程序的入口都是main文件，这个文件控制了主进程，负责控制应用的整个生命周期，显示原生界面，执行特殊操作并管理渲染进程。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// console.log(&quot;测试demo&quot;)</span></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; app, <span class="title class_">BrowserWindow</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">createWindow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> win = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">      <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">      <span class="attr">height</span>: <span class="number">600</span></span><br><span class="line">    &#125;)</span><br><span class="line">  </span><br><span class="line">    win.<span class="title function_">loadFile</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">createWindow</span>()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;electron .&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>PS:需要注意的是,和vue和react框架一样都需要一个index.html文件。</p>
+<p>你可能已经注意到了在<code>main.js</code> 文件中我们从electron中引入了两个模块<code>app,BrowserWindow</code></p>
+<ul>
+<li><code>app</code> 模块，它控制应用程序的事件生命周期。</li>
+<li><code>BrowserWindow</code> 模块，它创建和管理应用程序窗口。</li>
+</ul>
+
       
     </div>
     <div class="article-footer">
@@ -318,7 +342,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://yangshijunx.github.io/repository/index.html" title="repository" target="_blank" rel="external">https://yangshijunx.github.io/repository/index.html</a>
+      <a href="https://yangshijunx.github.io/2023/09/25/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/" title="Electron第一节" target="_blank" rel="external">https://yangshijunx.github.io/2023/09/25/Electron第一节/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -361,6 +385,16 @@
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2023/09/21/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" title="原型和原型链"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
   
   
   <!-- Button trigger modal -->
@@ -472,6 +506,10 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+
+
+   
 
 
 
