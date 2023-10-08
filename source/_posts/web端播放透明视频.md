@@ -1,19 +1,8 @@
----
-title: web端播放透明视频
-date: 2023-10-08 21:59:41
-categories: 
-- web前端
-tags:
-- Javascript
-- ffmpeg
-- 视频处理
----
-
 # web端播放透明视频
 
 前两天做了一个官网的项目，产品要求在网页上放一个视频用来介绍这个网站，但是呢要求只保留介绍的人物，不能有多余的环境内容，效果大致是这样的。
 
-![Untitled](/web端播放透明视频/Untitled.png)
+![Untitled](/images/web端播放透明视频/Untitled.png)
 
 产品拿来的效果是一个视频文件，所以没有办法判断参考对象采用的是建模还是直接就在视频上做的效果，仔细想一下直接播放视频不就可以了，想实现这样的效果首先播放器要透明，然后就需要在浏览器中播放带有透明通道的视频就可以了，ok逻辑理清了，就可以开工了。
 
@@ -23,21 +12,21 @@ tags:
 
 ### 第二步，将视频导出只包含人像
 
-![Untitled](web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%201.png)
+![Untitled](/images/web端播放透明视频/Untitled1.png)
 
 在效果里面找到超级键，然后拖拽到视频轨道上面。
 
-![Untitled](web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%202.png)
+![Untitled](/images/web端播放透明视频/Untitled2.png)
 
 点击视频轨道找到效果控件中的超级建选中绿幕，在这个过程中可以选择Alpha通道多次调整，宽容度等参数直到合适。
 
-![Untitled](web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%203.png)
+![Untitled](/images/web端播放透明视频/Untitled3.png)
 
-![Untitled](web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%204.png)
+![Untitled](/images/web端播放透明视频/Untitled4.png)
 
 接着就可以导出视频了，Pr中可以选择QuickTime中具有透明通道的选项。
 
-![Untitled](web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%205.png)
+![Untitled](/images/web端播放透明视频/Untitled5.png)
 
 不出意外，导出的视频是mov格式的，并且相比于原视频会变大很多，我这里两分钟的视频导出的视频3个多G，放到web端这不是开玩笑(别急)。
 
@@ -49,17 +38,17 @@ tags:
 
 实验结果webm支持透明通道，并且相对于原视频体积会小很多，并且清晰度没有损耗，效果如下：
 
-![Untitled](web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%206.png)
+![Untitled](/images/web端播放透明视频/Untitled6.png)
 
 到此所有的问题基本上都解决了，还有一个就是mov转webm线上转换太慢的问题，一开始想的是能不能使用现成的软件解决，结果尝试了各种各样的软件都不行，原本透明的视频变成了黑底的，想了好久终于想到了一个贼牛的项目，**ffmpeg。**github地址：https://github.com/FFmpeg/FFmpeg。
 
 windows的使用比较简单，官网提供的有现成的exe文件，下载下来就可以了，下载地址：[https://ffmpeg.org/download.html#build-windows](https://ffmpeg.org/download.html#build-windows)
 
-![Untitled](web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%207.png)
+![Untitled](/images/web端播放透明视频/Untitled7.png)
 
 下载下来之后，配置环境变量方式使用命令行进行调用。
 
-![Untitled](web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%208.png)
+![Untitled](/images/web端播放透明视频/Untitled8.png)
 
 转webm的命令如下，这样就可以保留透明通道。
 
@@ -67,4 +56,4 @@ windows的使用比较简单，官网提供的有现成的exe文件，下载下�
 ffmpeg -i input.mov -c:v libvpx-vp9 output.webm
 ```
 
-到此完成，总结ffmpeg是一个非常强大的工具,之前还有一个项目用到了，还没做总结。
+到此完成，总结ffmpeg是一个非常强大的工具。
