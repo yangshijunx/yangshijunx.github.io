@@ -17,24 +17,33 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>Electron第一节 | 杨某人的博客</title>
-  <meta name="description" content="electron第一节Date: September 25, 2023Status: In progressText: 1_Bit 什么是electronBuild cross-platform desktop apps with JavaScript, HTML, and CSS ——— electron官网 简单来说就是，electron就是一个使用js，html和css搭建跨平台桌面应用程序">
+  <title>web端播放透明视频 | 杨某人的博客</title>
+  <meta name="description" content="web端播放透明视频前两天做了一个官网的项目，产品要求在网页上放一个视频用来介绍这个网站，但是呢要求只保留介绍的人物，不能有多余的环境内容，效果大致是这样的。  产品拿来的效果是一个视频文件，所以没有办法判断参考对象采用的是建模还是直接就在视频上做的效果，仔细想一下直接播放视频不就可以了，想实现这样的效果首先播放器要透明，然后就需要在浏览器中播放带有透明通道的视频就可以了，ok逻辑理清了，就可以开">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Electron第一节">
-<meta property="og:url" content="https://yangshijunx.github.io/2023/09/26/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/index.html">
+<meta property="og:title" content="web端播放透明视频">
+<meta property="og:url" content="https://yangshijunx.github.io/2023/10/08/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/index.html">
 <meta property="og:site_name" content="1Bit">
-<meta property="og:description" content="electron第一节Date: September 25, 2023Status: In progressText: 1_Bit 什么是electronBuild cross-platform desktop apps with JavaScript, HTML, and CSS ——— electron官网 简单来说就是，electron就是一个使用js，html和css搭建跨平台桌面应用程序">
+<meta property="og:description" content="web端播放透明视频前两天做了一个官网的项目，产品要求在网页上放一个视频用来介绍这个网站，但是呢要求只保留介绍的人物，不能有多余的环境内容，效果大致是这样的。  产品拿来的效果是一个视频文件，所以没有办法判断参考对象采用的是建模还是直接就在视频上做的效果，仔细想一下直接播放视频不就可以了，想实现这样的效果首先播放器要透明，然后就需要在浏览器中播放带有透明通道的视频就可以了，ok逻辑理清了，就可以开">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yangshijunx.github.io/electron%E7%AC%AC%E4%B8%80%E8%8A%82%200da949a924f14c82a35e59f26099c561/Untitled.png">
-<meta property="article:published_time" content="2023-09-26T00:22:29.000Z">
-<meta property="article:modified_time" content="2023-09-29T15:28:26.870Z">
+<meta property="og:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/Untitled.png">
+<meta property="og:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%201.png">
+<meta property="og:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%202.png">
+<meta property="og:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%203.png">
+<meta property="og:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%204.png">
+<meta property="og:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%205.png">
+<meta property="og:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%206.png">
+<meta property="og:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%207.png">
+<meta property="og:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%208.png">
+<meta property="article:published_time" content="2023-10-08T21:59:41.000Z">
+<meta property="article:modified_time" content="2023-10-08T15:02:28.106Z">
 <meta property="article:author" content="1Bit">
 <meta property="article:tag" content="Javascript">
-<meta property="article:tag" content="Electron">
+<meta property="article:tag" content="ffmpeg">
+<meta property="article:tag" content="视频处理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yangshijunx.github.io/electron%E7%AC%AC%E4%B8%80%E8%8A%82%200da949a924f14c82a35e59f26099c561/Untitled.png">
+<meta name="twitter:image" content="https://yangshijunx.github.io/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/Untitled.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://yangshijunx.github.io/2023/09/26/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/index.html">
+  <link rel="canonical" href="https://yangshijunx.github.io/2023/10/08/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/index.html">
   
     <link rel="alternate" href="/atom.xml" title="1Bit" type="application/atom+xml">
   
@@ -184,7 +193,7 @@
   <div class="widget">
     <h3 class="widget-title">分类</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><span class="category-list-count">4</span></li></ul>
     </div>
   </div>
 
@@ -194,7 +203,7 @@
   <div class="widget">
     <h3 class="widget-title">标签</h3>
     <div class="widget-body">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ffmpeg/" rel="tag">ffmpeg</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/" rel="tag">视频处理</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -204,7 +213,7 @@
   <div class="widget">
     <h3 class="widget-title">标签云</h3>
     <div class="widget-body tagcloud">
-      <a href="/tags/Electron/" style="font-size: 13px;">Electron</a> <a href="/tags/Javascript/" style="font-size: 14px;">Javascript</a>
+      <a href="/tags/Electron/" style="font-size: 13px;">Electron</a> <a href="/tags/Javascript/" style="font-size: 14px;">Javascript</a> <a href="/tags/ffmpeg/" style="font-size: 13px;">ffmpeg</a> <a href="/tags/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/" style="font-size: 13px;">视频处理</a>
     </div>
   </div>
 
@@ -213,7 +222,7 @@
   <div class="widget">
     <h3 class="widget-title">归档</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">十月 2023</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -232,10 +241,25 @@
                 <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
               </p>
               <p class="item-title">
-                <a href="/2023/09/26/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/" class="title">Electron第一节</a>
+                <a href="/2023/10/08/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/" class="title">web端播放透明视频</a>
               </p>
               <p class="item-date">
-                <time datetime="2023-09-26T00:22:29.000Z" itemprop="datePublished">2023-09-26</time>
+                <time datetime="2023-10-08T21:59:41.000Z" itemprop="datePublished">2023-10-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/09/25/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/" class="title">Electron第一节</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-09-25T16:22:29.000Z" itemprop="datePublished">2023-09-25</time>
               </p>
             </div>
           </li>
@@ -283,14 +307,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Electron第一节" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-web端播放透明视频" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Electron第一节
+      web端播放透明视频
     </h1>
   
 
@@ -298,8 +322,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2023/09/26/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/" class="article-date">
-	  <time datetime="2023-09-26T00:22:29.000Z" itemprop="datePublished">2023-09-26</time>
+	<a href="/2023/10/08/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/" class="article-date">
+	  <time datetime="2023-10-08T21:59:41.000Z" itemprop="datePublished">2023-10-08</time>
 	</a>
 </span>
         
@@ -311,39 +335,46 @@
         
   <span class="article-tag">
     <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Electron/" rel="tag">Electron</a>, <a class="article-tag-link-link" href="/tags/Javascript/" rel="tag">Javascript</a>
+	<a class="article-tag-link-link" href="/tags/Javascript/" rel="tag">Javascript</a>, <a class="article-tag-link-link" href="/tags/ffmpeg/" rel="tag">ffmpeg</a>, <a class="article-tag-link-link" href="/tags/%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86/" rel="tag">视频处理</a>
   </span>
 
 
         
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/09/26/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/10/08/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/#comments" class="article-comment-link">评论</a></span>
         
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h1 id="electron第一节"><a href="#electron第一节" class="headerlink" title="electron第一节"></a>electron第一节</h1><p>Date: September 25, 2023<br>Status: In progress<br>Text: 1_Bit</p>
-<h3 id="什么是electron"><a href="#什么是electron" class="headerlink" title="什么是electron"></a>什么是electron</h3><p><strong>Build cross-platform desktop apps with JavaScript, HTML, and CSS ——— electron官网</strong></p>
-<p>简单来说就是，electron就是一个使用js，html和css搭建跨平台桌面应用程序的框架。</p>
-<p>每一个electron应用程序的入口都是main文件，这个文件控制了主进程，负责控制应用的整个生命周期，显示原生界面，执行特殊操作并管理渲染进程。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// console.log(&quot;测试demo&quot;)</span></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; app, <span class="title class_">BrowserWindow</span> &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">createWindow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> win = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">      <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">      <span class="attr">height</span>: <span class="number">600</span></span><br><span class="line">    &#125;)</span><br><span class="line">  </span><br><span class="line">    win.<span class="title function_">loadFile</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">createWindow</span>()</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// package.json</span></span><br><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">  <span class="string">&quot;dev&quot;</span>: <span class="string">&quot;electron .&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+        <h1 id="web端播放透明视频"><a href="#web端播放透明视频" class="headerlink" title="web端播放透明视频"></a>web端播放透明视频</h1><p>前两天做了一个官网的项目，产品要求在网页上放一个视频用来介绍这个网站，但是呢要求只保留介绍的人物，不能有多余的环境内容，效果大致是这样的。</p>
+<p><img src="/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/Untitled.png" alt="Untitled"></p>
+<p>产品拿来的效果是一个视频文件，所以没有办法判断参考对象采用的是建模还是直接就在视频上做的效果，仔细想一下直接播放视频不就可以了，想实现这样的效果首先播放器要透明，然后就需要在浏览器中播放带有透明通道的视频就可以了，ok逻辑理清了，就可以开工了。</p>
+<h3 id="第一步，播放器透明"><a href="#第一步，播放器透明" class="headerlink" title="第一步，播放器透明"></a>第一步，播放器透明</h3><p>好像不用哈哈哈哈，播放器就是透明的，不显示播放控件就可以了，那接下来主要的工作就是将介绍视频只保留人像就可以了，产品提供的是绿幕的人像视频使用pr的超级键处理之后，导出格式为mov的保留透明通道的视频就可以了。</p>
+<h3 id="第二步，将视频导出只包含人像"><a href="#第二步，将视频导出只包含人像" class="headerlink" title="第二步，将视频导出只包含人像"></a>第二步，将视频导出只包含人像</h3><p><img src="/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%201.png" alt="Untitled"></p>
+<p>在效果里面找到超级键，然后拖拽到视频轨道上面。</p>
+<p><img src="/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%202.png" alt="Untitled"></p>
+<p>点击视频轨道找到效果控件中的超级建选中绿幕，在这个过程中可以选择Alpha通道多次调整，宽容度等参数直到合适。</p>
+<p><img src="/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%203.png" alt="Untitled"></p>
+<p><img src="/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%204.png" alt="Untitled"></p>
+<p>接着就可以导出视频了，Pr中可以选择QuickTime中具有透明通道的选项。</p>
+<p><img src="/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%205.png" alt="Untitled"></p>
+<p>不出意外，导出的视频是mov格式的，并且相比于原视频会变大很多，我这里两分钟的视频导出的视频3个多G，放到web端这不是开玩笑(别急)。</p>
+<p>刚开始，想的是能不能通过压缩视频的形式实现，多番尝试之后失败了，单纯压缩mov视频不能实现，那我可不可以采用别的方式？想了好久，我突然想到之前在做数据可视化项目的时候UI使用AE导出过一个带有动效的图片，格式是webm，于是我想能不能把视频也转换成webm这种格式的，查了一下。</p>
+<p><strong>WebM</strong>是一个由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Google">Google</a>资助的项目，目标是构建一个<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%87%AA%E7%94%B1%E6%A1%A3%E6%A1%88%E6%A0%BC%E5%BC%8F">开放</a>的、免著作权费用的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%A7%86%E9%A2%91%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F">视频文件格式</a>。该视频文件格式应能提供高质量的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%A7%86%E9%A2%91%E5%8E%8B%E7%BC%A9">视频压缩</a>以配合<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTML5">HTML5</a>使用。 ——— 维基百科</p>
+<p>这不是巧了吗，这不是刚好符合要求，现在唯一的问题就是不知道支不支持透明通道，这还不简单试一下就可以了，一开始采用的是线上转换的方式，这里如果视频比较小推荐使用<a target="_blank" rel="noopener" href="https://converter.app/mov-to-webm/">https://converter.app/mov-to-webm/</a> 这个平台的（线上转换比较慢，视频太大还有G的风险，后面还有一个方案），其他的诸如格式工厂或者别的在线转换平台不知道是不是我操作又问题，导出的webm都是黑底的。</p>
+<p>实验结果webm支持透明通道，并且相对于原视频体积会小很多，并且清晰度没有损耗，效果如下：</p>
+<p><img src="/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%206.png" alt="Untitled"></p>
+<p>到此所有的问题基本上都解决了，还有一个就是mov转webm线上转换太慢的问题，一开始想的是能不能使用现成的软件解决，结果尝试了各种各样的软件都不行，原本透明的视频变成了黑底的，想了好久终于想到了一个贼牛的项目，<strong>ffmpeg。</strong>github地址：<a target="_blank" rel="noopener" href="https://github.com/FFmpeg/FFmpeg%E3%80%82">https://github.com/FFmpeg/FFmpeg。</a></p>
+<p>windows的使用比较简单，官网提供的有现成的exe文件，下载下来就可以了，下载地址：<a target="_blank" rel="noopener" href="https://ffmpeg.org/download.html#build-windows">https://ffmpeg.org/download.html#build-windows</a></p>
+<p><img src="/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%207.png" alt="Untitled"></p>
+<p>下载下来之后，配置环境变量方式使用命令行进行调用。</p>
+<p><img src="/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91%201e904dc5cb264785b83de7d93d5cdaf5/Untitled%208.png" alt="Untitled"></p>
+<p>转webm的命令如下，这样就可以保留透明通道。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i input.mov -c:v libvpx-vp9 output.webm</span><br></pre></td></tr></table></figure>
 
-<p>PS:需要注意的是,和vue和react框架一样都需要一个index.html文件。</p>
-<p>你可能已经注意到了在<code>main.js</code> 文件中我们从electron中引入了两个模块<code>app,BrowserWindow</code></p>
-<ul>
-<li><code>app</code> 模块，它控制应用程序的事件生命周期。</li>
-<li><code>BrowserWindow</code> 模块，它创建和管理应用程序窗口。</li>
-</ul>
-<p>在主进程中可以通过process对象访问node的相关变量，需要注意的是在主线程中是没有办法直接操作dom的因为主线程无法访问渲染器，<strong>主线程和渲染线程存在于完全不同的进程</strong>。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">createWindow</span>()</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;测试demo&quot;</span>, <span class="variable language_">window</span>, <span class="variable language_">document</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>到此完成，总结ffmpeg是一个非常强大的工具,之前还有一个项目用到了，还没做总结。。</p>
 
-<p><img src="/electron%E7%AC%AC%E4%B8%80%E8%8A%82%200da949a924f14c82a35e59f26099c561/Untitled.png" alt="Untitled"></p>
-<p>但是我们可以通过<strong>预加载</strong>脚本访问这两个渲染器，可以同时访问到window和document以及Node.js环境，具体的方法如下。</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// preload.js</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;DOMContentLoaded&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">replaceText</span> = (<span class="params">selector, text</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> element = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(selector)</span><br><span class="line">    <span class="keyword">if</span> (element) element.<span class="property">innerText</span> = text</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">const</span> dependency <span class="keyword">of</span> [<span class="string">&#x27;chrome&#x27;</span>, <span class="string">&#x27;node&#x27;</span>, <span class="string">&#x27;electron&#x27;</span>]) &#123;</span><br><span class="line">    <span class="title function_">replaceText</span>(<span class="string">`<span class="subst">$&#123;dependency&#125;</span>-version`</span>, process.<span class="property">versions</span>[dependency])</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在主线程中使用preload预加载</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">createWindow</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> win = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">      <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">      <span class="attr">height</span>: <span class="number">600</span>,</span><br><span class="line">      <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">        <span class="attr">preload</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&#x27;preload.js&#x27;</span>),</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    win.<span class="title function_">loadFile</span>(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Electron打包"><a href="#Electron打包" class="headerlink" title="Electron打包"></a>Electron打包</h3><p>使用Electron Forge进行打包</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save-dev @electron-forge/cli</span><br><span class="line">npx electron-forge <span class="keyword">import</span></span><br></pre></td></tr></table></figure>
       
     </div>
     <div class="article-footer">
@@ -352,7 +383,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://yangshijunx.github.io/2023/09/26/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/" title="Electron第一节" target="_blank" rel="external">https://yangshijunx.github.io/2023/09/26/Electron第一节/</a>
+      <a href="https://yangshijunx.github.io/2023/10/08/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/" title="web端播放透明视频" target="_blank" rel="external">https://yangshijunx.github.io/2023/10/08/web端播放透明视频/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -400,7 +431,7 @@
     
     
     <li class="next">
-      <a href="/2023/09/21/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" title="原型和原型链"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2023/09/25/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/" title="Electron第一节"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
