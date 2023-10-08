@@ -67,4 +67,4 @@ windows的使用比较简单，官网提供的有现成的exe文件，下载下�
 ffmpeg -i input.mov -c:v libvpx-vp9 output.webm
 ```
 
-到此完成，总结ffmpeg是一个非常强大的工具,之前还有一个项目用到了，还没做总结。。
+到此完成，总结ffmpeg是一个非常强大的工具,之前还有一个项目用到了，还没做总结。
