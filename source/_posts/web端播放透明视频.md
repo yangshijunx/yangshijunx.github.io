@@ -54,6 +54,9 @@ windows的使用比较简单，官网提供的有现成的exe文件，下载下�
 
 ```bash
 ffmpeg -i input.mov -c:v libvpx-vp9 output.webm
+// -i input.mov：这是一个选项，表示输入文件。-i 后面跟着要转码的源视频文件的路径
+// -c:v libvpx-vp9：这也是一个选项，用于指定视频编解码器。-c:v 表示视频编码器，libvpx-vp9 是 VP9 视频编码器的名称。VP9 是一种高效的开源视频编码格式，用于将视频压缩成WebM格式。
+// output.webm：这是输出文件的名称和格式。在这个例子中，输出文件将以WebM格式保存，并命名为 `
 ```
 
 到此完成，总结ffmpeg是一个非常强大的工具。
