@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Sass进阶 | 杨某人的博客</title>
+  <meta name="description" content="sass进阶（包含css原子化内容）Created: November 6, 2023 10:18 PMClass: sassType: vueReviewed: No SASS在前端开发中sass是必不可少的技能，在开发中对sass最明显的体验就是css嵌套以及变量功能，但是Sass（Syntactically Awesome Stylesheets）作为一种CSS的扩展语言，其内部还有很多增强">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass进阶">
+<meta property="og:url" content="https://yangshijunx.github.io/2023/11/06/Sass%E8%BF%9B%E9%98%B6/index.html">
+<meta property="og:site_name" content="1Bit">
+<meta property="og:description" content="sass进阶（包含css原子化内容）Created: November 6, 2023 10:18 PMClass: sassType: vueReviewed: No SASS在前端开发中sass是必不可少的技能，在开发中对sass最明显的体验就是css嵌套以及变量功能，但是Sass（Syntactically Awesome Stylesheets）作为一种CSS的扩展语言，其内部还有很多增强">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled.png">
+<meta property="og:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%201.png">
+<meta property="og:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%202.png">
+<meta property="og:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%203.png">
+<meta property="og:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%204.png">
+<meta property="og:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%205.png">
+<meta property="og:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%206.png">
+<meta property="og:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%207.png">
+<meta property="og:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%208.png">
+<meta property="article:published_time" content="2023-11-06T15:55:14.000Z">
+<meta property="article:modified_time" content="2023-11-06T15:55:50.249Z">
+<meta property="article:author" content="1Bit">
+<meta property="article:tag" content="Sass">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yangshijunx.github.io/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://yangshijunx.github.io/2023/11/06/Sass%E8%BF%9B%E9%98%B6/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="1Bit" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/yangshijunx" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">1Bit</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Best</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yangshijunx" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><span class="category-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Electron/" style="font-size: 13px;">Electron</a> <a href="/tags/Javascript/" style="font-size: 14px;">Javascript</a> <a href="/tags/Sass/" style="font-size: 13px;">Sass</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/11/06/Sass%E8%BF%9B%E9%98%B6/" class="title">Sass进阶</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-11-06T15:55:14.000Z" itemprop="datePublished">2023-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/11/06/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-11-06T14:25:25.591Z" itemprop="datePublished">2023-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/09/25/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/" class="title">Electron第一节</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-09-25T16:22:29.000Z" itemprop="datePublished">2023-09-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/09/21/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="title">原型和原型链</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-09-21T12:11:43.000Z" itemprop="datePublished">2023-09-21</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/09/19/My-New-Post/" class="title">事件循环</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-09-19T14:10:32.000Z" itemprop="datePublished">2023-09-19</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Sass进阶" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Sass进阶
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/11/06/Sass%E8%BF%9B%E9%98%B6/" class="article-date">
+	  <time datetime="2023-11-06T15:55:14.000Z" itemprop="datePublished">2023-11-06</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/Sass/" rel="tag">Sass</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/11/06/Sass%E8%BF%9B%E9%98%B6/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="sass进阶（包含css原子化内容）"><a href="#sass进阶（包含css原子化内容）" class="headerlink" title="sass进阶（包含css原子化内容）"></a>sass进阶（包含css原子化内容）</h1><p>Created: November 6, 2023 10:18 PM<br>Class: sass<br>Type: vue<br>Reviewed: No</p>
+<h2 id="SASS"><a href="#SASS" class="headerlink" title="SASS"></a>SASS</h2><p>在前端开发中sass是必不可少的技能，在开发中对sass最明显的体验就是css嵌套以及变量功能，但是Sass（Syntactically Awesome Stylesheets）作为一种CSS的扩展语言，其内部还有很多增强和有用的功能，以简化和改进CSS代码的编写和维护。Sass具有以下主要特点：</p>
+<ol>
+<li><strong>变量</strong>sass允许你定义变量来存储颜色，字体，边距等css属性的值，使得在整个样式表中一致地使用这些变量变得容易，可以轻松复用。</li>
+<li>嵌套规则：可以嵌套CSS规则，以更清晰地表示HTML元素之间的层次关系。这有助于减少代码的嵌套深度，提高可读性（但是需要避免过深嵌套）</li>
+<li>混合器：混合器允许你定义可重用的样式片段，并在多个地方引用它们。这有助于减少代码的重复，使样式更易维护。</li>
+<li>继承：Sass支持样式继承，允许一个选择器继承另一个选择器的属性。这有助于创建DRY（Don’t Repeat Yourself）的样式表。</li>
+<li>模块化：Sass允许将样式表拆分为多个文件，然后将它们导入到主样式表中，以帮助组织和管理大型项目的样式。</li>
+<li>运算：Sass支持在样式中执行算术运算，包括加法、减法、乘法和除法。这使得可以动态计算属性的值。</li>
+</ol>
+<p>sass文件已”.scss”或者“.sass”拓展名，生产环境西药编译成css文件，我们在使用webapack进行开发的时候，webpack承担了自动化编译的工作。总的来说，Sass是一种强大的CSS预处理器，它使CSS代码更加模块化、易维护和可读，同时提供了许多便捷的功能来提高前端开发的效率。</p>
+<p>ps：这里需要注意一下sass和scss的区别</p>
+<ol>
+<li><strong>语法规则</strong>:<ul>
+<li><strong>Sass</strong>: Sass使用缩进风格的语法，不使用大括号 <strong><code>&#123;&#125;</code></strong> 和分号 **<code>;</code>**。选择器和属性之间使用缩进来表示层次关系。</li>
+<li><strong>Scss</strong>: Scss使用类似于标准CSS的语法，使用大括号 <strong><code>&#123;&#125;</code></strong> 包围规则块，以及分号 <strong><code>;</code></strong> 来分隔属性。这使得Scss更接近标准CSS。</li>
+</ul>
+</li>
+<li><strong>文件扩展名</strong>:<ul>
+<li><strong>Sass</strong>: Sass文件使用 <strong><code>.sass</code></strong> 扩展名。</li>
+<li><strong>Scss</strong>: Scss文件使用 <strong><code>.scss</code></strong> 扩展名。</li>
+</ul>
+</li>
+<li><strong>易读性</strong>:<ul>
+<li><strong>Sass</strong>: 由于缩进风格的语法，Sass文件通常更加紧凑，但在视觉上可能不如Scss易读。</li>
+<li><strong>Scss</strong>: Scss更接近标准CSS，因此它通常更容易阅读和理解，特别是对那些熟悉CSS的开发者来说。</li>
+</ul>
+</li>
+<li><strong>兼容性</strong>:<ul>
+<li><strong>Sass</strong>: 由于不使用大括号和分号，Sass的语法在某些情况下可能会导致一些语法错误，需要开发者小心处理。</li>
+<li><strong>Scss</strong>: Scss更接近标准CSS，因此在语法上更容易转换和适应。</li>
+</ul>
+</li>
+</ol>
+<h2 id="sass基础使用"><a href="#sass基础使用" class="headerlink" title="sass基础使用"></a>sass基础使用</h2><h3 id="sass安装"><a href="#sass安装" class="headerlink" title="sass安装"></a>sass安装</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install sass</span><br></pre></td></tr></table></figure>
+
+<p>使用sass将sass类型文件转换为css</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">box</span> &#123;</span><br><span class="line">    .<span class="property">box</span>-content &#123;</span><br><span class="line">        <span class="attr">color</span>: red;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 正常来说浏览器是不能直接识别嵌套css的，chrome v112 已经支持嵌套了</span></span><br><span class="line"><span class="comment">// 所以我们需要将scss变异成css</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>sass提供四种编译选项</strong></p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">nested：嵌套缩进的css代码，它是默认值。</span><br><span class="line">expanded：没有缩进的、扩展的css代码。</span><br><span class="line">compact：简洁格式的css代码。</span><br><span class="line">compressed：压缩后的css代码。</span><br></pre></td></tr></table></figure>
+
+<p>生产环境一般使用compressed，编译命令</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx sass --style compressed index.<span class="property">scss</span> style.<span class="property">css</span></span><br></pre></td></tr></table></figure>
+
+<p>编译结果如下：</p>
+<p><img src="/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled.png" alt="Untitled"></p>
+<h3 id="sass使用变量"><a href="#sass使用变量" class="headerlink" title="sass使用变量"></a>sass使用变量</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$prim-<span class="attr">color</span>: green;</span><br><span class="line">.<span class="property">box</span> &#123;</span><br><span class="line">  .<span class="property">box</span>-content &#123;</span><br><span class="line">    <span class="attr">color</span>: $prim-color;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%201.png" alt="Untitled"></p>
+<p>同样我们可以将变量嵌套在字符串中，需要写在#{}之中</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$prim-<span class="attr">color</span>: green;</span><br><span class="line"><span class="attr">$side</span>: left;</span><br><span class="line">.<span class="property">box</span> &#123;</span><br><span class="line">  .<span class="property">box</span>-content &#123;</span><br><span class="line">    <span class="attr">color</span>: $prim-color;</span><br><span class="line">  &#125;</span><br><span class="line">  .<span class="property">box</span>-side &#123;</span><br><span class="line">    margin-#&#123;$side&#125;: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.notion.so/">https://www.notion.so</a></p>
+<h3 id="使用sass计算功能"><a href="#使用sass计算功能" class="headerlink" title="使用sass计算功能"></a>使用sass计算功能</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$prim-<span class="attr">color</span>: green;</span><br><span class="line"><span class="attr">$marginLeft</span>: 50px;</span><br><span class="line"><span class="attr">$side</span>: left;</span><br><span class="line">.<span class="property">box</span> &#123;</span><br><span class="line">  .<span class="property">box</span>-content &#123;</span><br><span class="line">    <span class="attr">color</span>: $prim-color;</span><br><span class="line">  &#125;</span><br><span class="line">  .<span class="property">box</span>-side &#123;</span><br><span class="line">    margin-#&#123;$side&#125;: 30px;</span><br><span class="line">    margin-<span class="attr">left</span>: <span class="title function_">calc</span>(100vh - $marginLeft);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%202.png" alt="Untitled"></p>
+<h3 id="sass继承功能，代码复用"><a href="#sass继承功能，代码复用" class="headerlink" title="sass继承功能，代码复用"></a>sass继承功能，代码复用</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$prim-<span class="attr">color</span>: green;</span><br><span class="line"><span class="attr">$marginLeft</span>: 50px;</span><br><span class="line"><span class="attr">$side</span>: left;</span><br><span class="line">.<span class="property">box</span> &#123;</span><br><span class="line">  .<span class="property">box</span>-content &#123;</span><br><span class="line">    <span class="attr">color</span>: $prim-color;</span><br><span class="line">    background-<span class="attr">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">  .<span class="property">box</span>-side &#123;</span><br><span class="line">    @extend .<span class="property">box</span>-content;</span><br><span class="line">    margin-#&#123;$side&#125;: 30px;</span><br><span class="line">    margin-<span class="attr">left</span>: <span class="title function_">calc</span>(100vh - $marginLeft);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%203.png" alt="Untitled"></p>
+<h3 id="Mixin（可以复用的代码块）"><a href="#Mixin（可以复用的代码块）" class="headerlink" title="Mixin（可以复用的代码块）"></a>Mixin（可以复用的代码块）</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$prim-<span class="attr">color</span>: green;</span><br><span class="line"><span class="attr">$marginLeft</span>: 50px;</span><br><span class="line"><span class="attr">$side</span>: left;</span><br><span class="line">.<span class="property">box</span> &#123;</span><br><span class="line">  .<span class="property">box</span>-content &#123;</span><br><span class="line">    <span class="attr">color</span>: $prim-color;</span><br><span class="line">    background-<span class="attr">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">  .<span class="property">box</span>-side &#123;</span><br><span class="line">    @extend .<span class="property">box</span>-content;</span><br><span class="line">    margin-#&#123;$side&#125;: 30px;</span><br><span class="line">    margin-<span class="attr">left</span>: <span class="title function_">calc</span>(100vh - $marginLeft);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%204.png" alt="Untitled"></p>
+<p>mixin支持传参</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">$prim-<span class="attr">color</span>: green;</span><br><span class="line"><span class="attr">$marginLeft</span>: 50px;</span><br><span class="line"><span class="attr">$side</span>: left;</span><br><span class="line">@mixin flex-row &#123;</span><br><span class="line">  <span class="attr">display</span>: flex;</span><br><span class="line">  flex-<span class="attr">direction</span>: row;</span><br><span class="line">&#125;</span><br><span class="line">@mixin <span class="title function_">right</span>(<span class="params">$right: 40px</span>) &#123;</span><br><span class="line">  margin-<span class="attr">right</span>: $right;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">box</span> &#123;</span><br><span class="line">  .<span class="property">box</span>-content &#123;</span><br><span class="line">    @include <span class="title function_">right</span>();</span><br><span class="line">    <span class="attr">color</span>: $prim-color;</span><br><span class="line">    background-<span class="attr">color</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">  .<span class="property">box</span>-side &#123;</span><br><span class="line">    @extend .<span class="property">box</span>-content;</span><br><span class="line">    @include flex-row;</span><br><span class="line">    @include <span class="title function_">right</span>(30px);</span><br><span class="line">    margin-#&#123;$side&#125;: 30px;</span><br><span class="line">    margin-<span class="attr">left</span>: <span class="title function_">calc</span>(100vh - $marginLeft);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%205.png" alt="Untitled"></p>
+<h3 id="sass内置颜色函数"><a href="#sass内置颜色函数" class="headerlink" title="sass内置颜色函数"></a>sass内置颜色函数</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">lighten</span>(#cc3, <span class="number">10</span>%) <span class="comment">// #d6d65c</span></span><br><span class="line"><span class="title function_">darken</span>(#cc3, <span class="number">10</span>%) <span class="comment">// #a3a329</span></span><br><span class="line"><span class="title function_">grayscale</span>(#cc3) <span class="comment">// #808080</span></span><br><span class="line"><span class="title function_">complement</span>(#cc3) <span class="comment">// #33c</span></span><br></pre></td></tr></table></figure>
+
+<p><strong><code>darken($color, $amount)</code>  将color颜色加深amount介于0-100%之间</strong></p>
+<p><strong><code>lighten($color, $amount)</code></strong> 将颜色 <code>$color</code> 变亮<code>$mount</code> 是介于 <code>0%</code> 到 <code>100%</code> (含) 之间的值。按照这个值增加 <code>$color</code> HSL 的亮度。</p>
+<p><strong><code>mix($color1, $color2, $weight: 50%)</code></strong> 将颜色 <code>$color1</code> 与 <code>$color2</code> 混合在一起生成新的颜色，<code>$weight</code> 与透明度决定了每个颜色在结果里占的比重。<code>$weight</code> 默认值为 <code>50%</code>。取值范围是介于 <code>0%</code> 到 <code>100%</code> (含) 之间的值。如果指定的比例是 <code>25%</code> ,这意味着第一个颜色所占比例为 <code>25%</code>，第二个颜色所占比例为 <code>75%</code>。</p>
+<h3 id="插入文件"><a href="#插入文件" class="headerlink" title="插入文件"></a>插入文件</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">&quot;index.scss&quot;</span>;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">&quot;index.css&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>for循环</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">for</span> $i <span class="keyword">from</span> <span class="number">1</span> through <span class="number">10</span> &#123;</span><br><span class="line">  .<span class="property">margin</span>-left-#&#123;$i&#125; &#123;</span><br><span class="line">    margin-<span class="attr">left</span>: #&#123;$i&#125;px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%206.png" alt="Untitled"></p>
+<p>while循环</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">$index</span>: <span class="number">1</span>;</span><br><span class="line">@<span class="keyword">while</span> $index &lt; <span class="number">10</span> &#123;</span><br><span class="line">  .<span class="property">margin</span>-right-#&#123;$index&#125; &#123;</span><br><span class="line">    margin-<span class="attr">right</span>: #&#123;$index&#125;px;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attr">$index</span>: $index + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%207.png" alt="Untitled"></p>
+<p>each命令</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@each $member <span class="keyword">in</span> a, b, c, d &#123;</span><br><span class="line">　　　　.#&#123;$member&#125; &#123;</span><br><span class="line">　　　　　　background-<span class="attr">image</span>: <span class="title function_">url</span>(<span class="string">&quot;/image/#&#123;$member&#125;.jpg&quot;</span>);</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">function</span> <span class="title function_">doubleValue</span>(<span class="params">$value</span>) &#123;</span><br><span class="line">  @<span class="keyword">return</span> $value * <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">.<span class="property">box</span>-side &#123;</span><br><span class="line">  <span class="attr">border</span>: <span class="title function_">doubleValue</span>(10px) solid black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%208.png" alt="Untitled"></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://yangshijunx.github.io/2023/11/06/Sass%E8%BF%9B%E9%98%B6/" title="Sass进阶" target="_blank" rel="external">https://yangshijunx.github.io/2023/11/06/Sass进阶/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/yangshijunx" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/yangshijunx" target="_blank"><span class="text-dark">1Bit</span><small class="ml-1x">Best</small></a></h3>
+        <div>不积硅步无以至千里，不积小流无以成江海。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2023/11/06/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/" title="(no title)"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg2.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg2.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yangshijunx" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
