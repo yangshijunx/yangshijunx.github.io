@@ -78,7 +78,7 @@ npx sass --style compressed index.scss style.css
 
 编译结果如下：
 
-![Untitled](sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled.png)
+![Untitled](/images/sass进阶/Untitled.png)
 
 ### sass使用变量
 
@@ -91,7 +91,7 @@ $prim-color: green;
 }
 ```
 
-![Untitled](sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%201.png)
+![Untitled](/images/sass进阶/Untitled1.png)
 
 同样我们可以将变量嵌套在字符串中，需要写在#{}之中
 
@@ -107,8 +107,6 @@ $side: left;
   }
 }
 ```
-
-[https://www.notion.so](https://www.notion.so)
 
 ### 使用sass计算功能
 
@@ -127,7 +125,7 @@ $side: left;
 }
 ```
 
-![Untitled](sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%202.png)
+![Untitled](/images/sass/Untitled2.png)
 
 ### sass继承功能，代码复用
 
@@ -148,7 +146,7 @@ $side: left;
 }
 ```
 
-![Untitled](sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%203.png)
+![Untitled](/images/sass进阶/Untitled3.png)
 
 ### Mixin（可以复用的代码块）
 
@@ -169,7 +167,7 @@ $side: left;
 }
 ```
 
-![Untitled](sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%204.png)
+![Untitled](/images/sass进阶/Untitled4.png)
 
 mixin支持传参
 
@@ -200,7 +198,7 @@ $side: left;
 }
 ```
 
-![Untitled](sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%205.png)
+![Untitled](/images/sass进阶/Untitled5.png)
 
 ### sass内置颜色函数
 
@@ -236,7 +234,7 @@ for循环
 }
 ```
 
-![Untitled](sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%206.png)
+![Untitled](/images/sass进阶/Untitled6.png)
 
 while循环
 
@@ -250,7 +248,7 @@ $index: 1;
 }
 ```
 
-![Untitled](sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%207.png)
+![Untitled](/images/sass进阶/Untitled7.png)
 
 each命令
 
@@ -273,4 +271,115 @@ each命令
 }
 ```
 
-![Untitled](sass%E8%BF%9B%E9%98%B6%EF%BC%88%E5%8C%85%E5%90%ABcss%E5%8E%9F%E5%AD%90%E5%8C%96%E5%86%85%E5%AE%B9%EF%BC%89%204d10b02eaa754f248e76fc1ef59eaf9a/Untitled%208.png)
+![Untitled](/images/sass进阶/Untitled8.png)
+
+## 进阶内容
+
+sass变量作用域名
+
+![Untitled](/images/sass进阶/Untitled9.png)
+
+在这个例子中可以看出，Sass 中的变量没有块级作用域特性，而是随执行随覆盖随调用。调用的前面没有变量声明，就报错，有很多变量声明，就调用在它上面离它最近的变量值，使用时最好是在顶部声明，之后全局调用就可以了。
+
+### 引用父级元素   &
+
+可以用 `&` 符号代替父级选择器，超级实用，例如：
+
+```jsx
+$width: 120px;
+.main {
+  .content {
+    width: $width;
+    $width: 130px;
+  }
+  $width: 140px;
+  .sidebar {
+    width: $width;
+    &::after {
+      content: "测试";
+    }
+  }
+}
+```
+
+![Untitled](/images/sass进阶/Untitled10.png)
+
+## sass中的四则运算
+
+Sass 支持 加法（＋）、减法（－）、乘法（＊）、除法（／）以及取余（％）
+
+### 数值相加
+
+```jsx
+$width1: 100px;
+$width2: 200px;
+.main {
+  width: $width1 + $width2;
+}
+```
+
+输出
+
+```jsx
+.main{width:300px}/*# sourceMappingURL=style.css.map */
+```
+
+这里的变量具有字符单位，但是sass在进行计算的时候会进行计算并对单位进行处理。
+
+### 字符串相加
+
+```jsx
+.main::after {
+  content: "hello " + world;
+  font-family: sans- + "serif";
+}
+```
+
+输出
+
+```jsx
+
+.main::after{content:"hello world";font-family:sans-serif}/*# sourceMappingURL=style.css.map */
+```
+
+加法连接字符串时，对于引号的合并也有一定规则，如果前面字符串带有引号，后面字符串会自动包含在引号中，如果前面没有，后面带有引号的字符串也会去掉引号。
+
+可以使用#{}进行加法数值运算
+
+```jsx
+$num: 12;
+.main::before {
+  content: "这是啥" + #{$num + 1};
+}
+```
+
+输出
+
+```jsx
+.main::before{content:"这是啥13"}/*# sourceMappingURL=style.css.map */
+```
+
+### @extend和**@mixin**
+
+@extend可以直接继承另一个选择器中的属性，如果只在 CSS 中去对每个结构实现 clearfix 的效果，要么把这段代码不停的复制到对应选择器中，产生大量冗余，要么就把这个结构选择器翻到上面去找 .clearfix 类，加在后面，费时费力。
+
+@mixin 定义的是一个片段，这个片段可以是类似变量的一段文字一条属性，也可以是一整个选择器和内容，也可以是一个选择器的一部分 CSS 代码。此外还可以传递参数，通过参数生成不同代码。它需要配合 @inclde 命令来引用这段代码，类似复制的效果。@mixin 定义的内容，不会编译输出。
+
+可以实现类似函数效果
+
+```jsx
+@mixin border-radius($radius: 5px) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+.content {
+  @include border-radius(10px);
+}
+```
+
+输出
+
+```jsx
+.content{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px}/*# sourceMappingURL=style.css.map */
+```
