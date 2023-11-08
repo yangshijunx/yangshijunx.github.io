@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>react文档review | 杨某人的博客</title>
+  <meta name="description" content="react文档阅读Created: November 6, 2023 10:19 PMClass: 前端Type: ReactMaterials: https:&#x2F;&#x2F;react.dev&#x2F;learnReviewed: No 使用jsx 一个组件返回一个根元素，可以使用div包裹或者空标签包裹  1234567891011&lt;&gt;  &lt;h1&gt;Hedy Lamarr&amp;#x27;s To">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react文档review">
+<meta property="og:url" content="https://yangshijunx.github.io/2023/11/08/react%E6%96%87%E6%A1%A3review/index.html">
+<meta property="og:site_name" content="1Bit">
+<meta property="og:description" content="react文档阅读Created: November 6, 2023 10:19 PMClass: 前端Type: ReactMaterials: https:&#x2F;&#x2F;react.dev&#x2F;learnReviewed: No 使用jsx 一个组件返回一个根元素，可以使用div包裹或者空标签包裹  1234567891011&lt;&gt;  &lt;h1&gt;Hedy Lamarr&amp;#x27;s To">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://react.dev/images/docs/illustrations/i_children-prop.png">
+<meta property="article:published_time" content="2023-11-08T23:03:15.000Z">
+<meta property="article:modified_time" content="2023-11-08T15:05:08.420Z">
+<meta property="article:author" content="1Bit">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://react.dev/images/docs/illustrations/i_children-prop.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://yangshijunx.github.io/2023/11/08/react%E6%96%87%E6%A1%A3review/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="1Bit" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/yangshijunx" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">1Bit</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Best</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Hangzhou, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yangshijunx" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a><span class="category-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/" rel="tag">Javascript</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sass/" rel="tag">Sass</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Electron/" style="font-size: 13px;">Electron</a> <a href="/tags/Javascript/" style="font-size: 14px;">Javascript</a> <a href="/tags/React/" style="font-size: 13px;">React</a> <a href="/tags/Sass/" style="font-size: 13px;">Sass</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">十一月 2023</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">九月 2023</a><span class="archive-list-count">3</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/11/08/react%E6%96%87%E6%A1%A3review/" class="title">react文档review</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-11-08T23:03:15.000Z" itemprop="datePublished">2023-11-08</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/11/06/Sass%E8%BF%9B%E9%98%B6/" class="title">Sass进阶</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-11-06T23:55:14.000Z" itemprop="datePublished">2023-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2023/11/06/web%E7%AB%AF%E6%92%AD%E6%94%BE%E9%80%8F%E6%98%8E%E8%A7%86%E9%A2%91/" class="title">(no title)</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-11-06T14:25:25.591Z" itemprop="datePublished">2023-11-06</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/09/25/Electron%E7%AC%AC%E4%B8%80%E8%8A%82/" class="title">Electron第一节</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-09-25T16:22:29.000Z" itemprop="datePublished">2023-09-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2023/09/21/%E5%8E%9F%E5%9E%8B%E5%92%8C%E5%8E%9F%E5%9E%8B%E9%93%BE/" class="title">原型和原型链</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2023-09-21T12:11:43.000Z" itemprop="datePublished">2023-09-21</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-react文档review" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react文档review
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2023/11/08/react%E6%96%87%E6%A1%A3review/" class="article-date">
+	  <time datetime="2023-11-08T23:03:15.000Z" itemprop="datePublished">2023-11-08</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/web%E5%89%8D%E7%AB%AF/">web前端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link-link" href="/tags/React/" rel="tag">React</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2023/11/08/react%E6%96%87%E6%A1%A3review/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h1 id="react文档阅读"><a href="#react文档阅读" class="headerlink" title="react文档阅读"></a>react文档阅读</h1><p>Created: November 6, 2023 10:19 PM<br>Class: 前端<br>Type: React<br>Materials: <a target="_blank" rel="noopener" href="https://react.dev/learn">https://react.dev/learn</a><br>Reviewed: No</p>
+<h3 id="使用jsx"><a href="#使用jsx" class="headerlink" title="使用jsx"></a>使用jsx</h3><ol>
+<li><p>一个组件返回一个根元素，可以使用div包裹或者空标签包裹</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hedy Lamarr&#x27;s Todos<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">img</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">src</span>=<span class="string">&quot;https://i.imgur.com/yXOvdOSs.jpg&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">alt</span>=<span class="string">&quot;Hedy Lamarr&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    <span class="attr">class</span>=<span class="string">&quot;photo&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">  &gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    ...</span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p> 为什么不能返回两个呢？</p>
+<p> JSX looks like HTML, but under the hood it is transformed into plain JavaScript objects. You can’t return two objects from a function without wrapping them into an array. This explains why you also can’t return two JSX tags without wrapping them into another tag or a Fragment.</p>
+</li>
+<li><p>jsx中的标签都必须闭合</p>
+<p> <code>&lt;img&gt;</code> 必须是<code>&lt;img /&gt;</code> </p>
+</li>
+<li><p>在jsx中大部分时候使用驼峰命名法，在做迁移的时候可以使用转黄工具诸如：<a target="_blank" rel="noopener" href="https://transform.tools/html-to-jsx">https://transform.tools/html-to-jsx</a></p>
+<p> 例如class写成className，</p>
+<p> 但是也有例外</p>
+<p> For historical reasons, <code>[aria-*](https://developer.mozilla.org/docs/Web/Accessibility/ARIA)</code> and <code>[data-*](https://developer.mozilla.org/docs/Learn/HTML/Howto/Use_data_attributes)</code> attributes are written as in HTML with dashes.</p>
+</li>
+<li><p>在jsx中使用 <code>&#123;&#125;</code> 访问js中的内容，官网描述<code>In this situation, you can use curly braces in your JSX to open a window to JavaScript.</code></p>
+<p> 通过引号将字符串数据传递给标签或者组件属性，</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Avatar</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">img</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">className</span>=<span class="string">&quot;avatar&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">src</span>=<span class="string">&quot;https://i.imgur.com/7vQD0fPs.jpg&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">alt</span>=<span class="string">&quot;Gregorio Y. Zara&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    /&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 如果是使用js的变量动态赋值只需要使用<code>&#123;&#125;</code> 替换 <code>“”</code> </p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Avatar</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> avatar = <span class="string">&#x27;https://i.imgur.com/7vQD0fPs.jpg&#x27;</span>;</span><br><span class="line">  <span class="keyword">const</span> description = <span class="string">&#x27;Gregorio Y. Zara&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">img</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">className</span>=<span class="string">&quot;avatar&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">src</span>=<span class="string">&#123;avatar&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">alt</span>=<span class="string">&#123;description&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    /&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <code>&#123;&#125;</code> : <strong><strong>A window into the JavaScript world</strong></strong></p>
+<p> ps:<strong><strong>Using “double curlies”: CSS and other objects in JSX</strong></strong></p>
+<p> 如果赋值对象，直接写的话需要使用双括号。</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">person=&#123;&#123; <span class="attr">name</span>: <span class="string">&quot;Hedy Lamarr&quot;</span>, <span class="attr">inventions</span>: <span class="number">5</span> &#125;&#125;</span><br><span class="line">&lt;ul style=&#123;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">backgroundColor</span>: <span class="string">&#x27;black&#x27;</span>,</span><br><span class="line">    <span class="attr">color</span>: <span class="string">&#x27;pink&#x27;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;&gt;</span><br><span class="line"><span class="comment">// 内联css属性需要使用驼峰命名法</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="组件传参props"><a href="#组件传参props" class="headerlink" title="组件传参props"></a>组件传参props</h3><ol>
+<li><p>step1传参</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Profile</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Avatar</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">person</span>=<span class="string">&#123;&#123;</span> <span class="attr">name:</span> &#x27;<span class="attr">Lin</span> <span class="attr">Lanying</span>&#x27;, <span class="attr">imageId:</span> &#x27;<span class="attr">1bX5QH6</span>&#x27; &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      <span class="attr">size</span>=<span class="string">&#123;100&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">    /&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>step2解构props</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Avatar</span>(<span class="params">&#123; person, size &#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// person and size are available here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> ps：in fact, props <em>are</em> the only argument to your component! React component functions accept a single argument, a <code>props</code> object:</p>
+<p> 组件只能接收一个参数就是props。</p>
+</li>
+<li><p>给props设置默认值</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Avatar</span>(<span class="params">&#123; person, size = <span class="number">100</span> &#125;</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 默认值何时生效？</p>
+<p> The default value is only used if the <code>size</code> prop is missing or if you pass <code>size=&#123;undefined&#125;</code>. But if you pass <code>size=&#123;null&#125;</code> or <code>size=&#123;0&#125;</code>, the default value will <strong>not</strong> be used.</p>
+<p> 也就是说只有不传值，或者传值为undefined时生效，null和0并不会使用默认值。</p>
+</li>
+<li><p>props传值简化</p>
+<p> 如果我们在传值的时候属性名和变量名相同，那么我们可以这样简化代码</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Profile</span>(<span class="params">&#123; person, size, isSepia, thickBorder &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;card&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Avatar</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">person</span>=<span class="string">&#123;person&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">size</span>=<span class="string">&#123;size&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">isSepia</span>=<span class="string">&#123;isSepia&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">thickBorder</span>=<span class="string">&#123;thickBorder&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">简化如下======&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Profile</span>(<span class="params">props</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;card&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Avatar</span> &#123;<span class="attr">...props</span>&#125; /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>插槽</p>
+<p> When you nest content inside a JSX tag, the parent component will receive that content in a prop called <code>children</code>. For example, the <code>Card</code> component below will receive a <code>children</code> prop set to <code>&lt;Avatar /&gt;</code> and render it in a wrapper div:</p>
+<p> You can think of a component with a <code>children</code> prop as having a <strong>“hole”</strong> that can be “filled in” by its parent components with arbitrary JSX.</p>
+ <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Avatar</span> <span class="keyword">from</span> <span class="string">&#x27;./Avatar.js&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Card</span>(<span class="params">&#123; children &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;card&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      &#123;children&#125;</span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Profile</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">Card</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Avatar</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">size</span>=<span class="string">&#123;100&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">person</span>=<span class="string">&#123;&#123;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">name:</span> &#x27;<span class="attr">Katsuko</span> <span class="attr">Saruhashi</span>&#x27;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">imageId:</span> &#x27;<span class="attr">YfeOqp2</span>&#x27;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">      /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">Card</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <img src="https://react.dev/images/docs/illustrations/i_children-prop.png" alt="https://react.dev/images/docs/illustrations/i_children-prop.png"></p>
+</li>
+<li><p>props的值并不是静态的，而是动态变化的，需要注意的是react内部数据是单向流动的也就说我们不能在子组件内部修改props的值而是应该在父组件中修改流向子组件。</p>
+<p> However, props are <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Immutable_object">immutable</a>—a term from computer science meaning “unchangeable”. When a component needs to change its props (for example, in response to a user interaction or new data), <code>it will have to “ask” its parent component to pass it *different props*—a new object</code>! Its old props will then be cast aside, and eventually the JavaScript engine will reclaim the memory taken by them.</p>
+<p> <strong>Don’t try to “change props”.</strong> When you need to respond to the user input (like changing the selected color), you will need to “set state”, which you can learn about in <a target="_blank" rel="noopener" href="https://react.dev/learn/state-a-components-memory">State: A Component’s Memory.</a></p>
+</li>
+</ol>
+<h3 id="条件渲染"><a href="#条件渲染" class="headerlink" title="条件渲染"></a>条件渲染</h3><p>主要语法：In React, you can conditionally render JSX using JavaScript syntax like <code>if</code> statements, <code>&amp;&amp;</code>, and <code>? :</code> operators.</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Item</span>(<span class="params">&#123; name, isPacked &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (isPacked) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span>&#123;name&#125; ✔<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">li</span> <span class="attr">className</span>=<span class="string">&quot;item&quot;</span>&gt;</span>&#123;name&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">PackingList</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Sally Ride&#x27;s Packing List<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Item</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">isPacked</span>=<span class="string">&#123;true&#125;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">name</span>=<span class="string">&quot;Space suit&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Item</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">isPacked</span>=<span class="string">&#123;true&#125;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">name</span>=<span class="string">&quot;Helmet with a golden leaf&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">Item</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">isPacked</span>=<span class="string">&#123;false&#125;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">          <span class="attr">name</span>=<span class="string">&quot;Photo of Tam&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        /&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">section</span>&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://yangshijunx.github.io/2023/11/08/react%E6%96%87%E6%A1%A3review/" title="react文档review" target="_blank" rel="external">https://yangshijunx.github.io/2023/11/08/react文档review/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/yangshijunx" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/yangshijunx" target="_blank"><span class="text-dark">1Bit</span><small class="ml-1x">Best</small></a></h3>
+        <div>不积硅步无以至千里，不积小流无以成江海。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2023/11/06/Sass%E8%BF%9B%E9%98%B6/" title="Sass进阶"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg2.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg2.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/yangshijunx" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+
+<script src="/js/plugin.min.js"></script>
+
+
+<script src="/js/application.js"></script>
+
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+
+
+
+
+   
+
+
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
+
+
+
+
+
+
+
+</body>
+</html>
